@@ -1,0 +1,39 @@
+/* BRENO BIKE — ULTRA MEGA BRAIN CINEMATIC MOTION 2.0 */
+:root{--motion-accent:#ff6837}
+html{scroll-padding-top:84px}
+body{overflow-x:clip}
+.motion-grain{position:fixed;inset:0;pointer-events:none;z-index:99;opacity:.1;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.83' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' opacity='.4' filter='url(%23n)'/%3E%3C/svg%3E")}
+.motion-cursor{position:fixed;top:0;left:0;z-index:180;pointer-events:none;display:flex;align-items:center;justify-content:center;width:88px;height:88px;border:1px solid rgba(255,255,255,.7);border-radius:50%;color:#fff;background:rgba(255,105,50,.7);backdrop-filter:blur(6px);opacity:0;transform:translate3d(-150px,-150px,0) scale(.5);transition:opacity .25s ease,background .25s ease;will-change:transform}
+.motion-cursor span{font-size:10px;font-weight:800;letter-spacing:.15em}
+.motion-cursor.is-active{opacity:1}
+.motion-story{height:300svh;background:#080a0c;position:relative;color:#fff}
+.motion-story-sticky{height:100svh;min-height:620px;position:sticky;top:0;overflow:hidden;isolation:isolate;background:radial-gradient(ellipse at 65% 55%,#212831 0%,#0b0d11 53%,#050607 100%)}
+.motion-story-backdrop{position:absolute;inset:0;z-index:-1;overflow:hidden}
+.motion-gridlines{position:absolute;inset:0;background:linear-gradient(90deg,transparent 49.95%,rgba(255,255,255,.08) 50%,transparent 50.05%),linear-gradient(transparent 49.95%,rgba(255,255,255,.07) 50%,transparent 50.05%);background-size:8vw 8vw;mask-image:linear-gradient(90deg,transparent,#000 35%,#000 90%,transparent);opacity:.5}
+.motion-halo{position:absolute;left:67%;top:54%;width:65vw;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);filter:blur(70px);opacity:.22;background:radial-gradient(circle,#ff682d 0%,transparent 63%)}
+.halo-b{width:35vw;background:radial-gradient(circle,#ffcc9d 0%,transparent 70%);opacity:.14}
+.motion-orbit{position:absolute;left:67%;top:54%;width:min(64vw,950px);aspect-ratio:1;border:1px solid rgba(255,144,91,.22);border-radius:50%;transform:translate(-50%,-50%) rotateX(63deg) rotate(-30deg);box-shadow:0 0 55px rgba(255,102,48,.1),inset 0 0 50px rgba(255,102,48,.06)}
+.orbit-b{width:min(45vw,660px);border-style:dashed;opacity:.65}
+.motion-story-bike{position:absolute;left:51%;top:51%;width:min(77vw,1100px);transform:translate(-50%,-50%) scale(.86);filter:drop-shadow(0 35px 80px rgba(0,0,0,.9));will-change:transform}
+.motion-story-bike img{width:100%;height:auto;display:block}
+.motion-story-top,.motion-story-bottom{position:absolute;left:clamp(20px,6vw,110px);right:clamp(20px,6vw,110px);display:flex;align-items:center;justify-content:space-between;font-size:10px;letter-spacing:.18em;font-weight:700;color:#c6c7c6}
+.motion-story-top{top:110px}.motion-story-bottom{bottom:45px;gap:25px}
+.motion-story-meter{width:min(26vw,260px);height:2px;background:#474b4e;overflow:hidden}.motion-story-meter i{display:block;width:100%;height:100%;background:#ff6a35;transform:scaleX(0);transform-origin:left}
+.motion-story-copy{position:absolute;left:clamp(20px,6vw,110px);top:47%;transform:translateY(-50%);width:min(720px,65vw);text-shadow:0 12px 45px rgba(0,0,0,.7)}
+.motion-story-kicker{font-size:11px;letter-spacing:.22em;color:#ff8856;font-weight:700;margin:0 0 22px}
+.motion-story-copy h2{font-family:'Barlow Condensed',Impact,sans-serif;font-size:clamp(76px,10.5vw,190px);line-height:.79;letter-spacing:-.04em;margin:0;text-transform:uppercase;font-weight:900}
+.motion-story-copy h2 em{color:#ff6837;font-style:normal}
+.motion-story-copy>p:last-child{font-size:clamp(12px,1.3vw,17px);line-height:1.7;max-width:350px;color:#ddd;margin:30px 0 0}
+.motion-story-copy{transition:opacity .18s ease}.motion-story-copy.is-changing{opacity:.2}
+.motion-interlude{min-height:85svh;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(35px,6vw,95px);background:#f0ece4;color:#0b0b0b;overflow:hidden}
+.motion-interlude-label,.motion-interlude-line{font-size:11px;font-weight:700;letter-spacing:.2em}
+.motion-interlude-title{font-family:'Barlow Condensed',Impact,sans-serif;font-size:clamp(90px,16vw,280px);line-height:.77;letter-spacing:-.06em;font-weight:900;transform:translateY(0)}
+.motion-interlude-title span{color:#ff6530}.motion-interlude-title em{font-style:normal;-webkit-text-stroke:2px #141414;color:transparent}
+.motion-interlude-line{display:flex;justify-content:space-between;border-top:1px solid #555;padding-top:18px}
+.hero-title .line>span{will-change:transform}.hero-visual{will-change:transform}
+.product-art{overflow:hidden}.product-art img{transition:transform .7s cubic-bezier(.22,1,.36,1);will-change:transform}.product:hover .product-art img{transform:scale(1.08) rotate(-1.5deg)}
+.machine-model img{transition:transform .5s cubic-bezier(.22,1,.36,1)}.machine-stage:hover .machine-model img{transform:scale(1.025)}
+.hotspot.active{box-shadow:0 0 0 10px rgba(255,99,47,.13),0 0 45px rgba(255,99,47,.5)}
+@media(min-width:850px){.product{transform-style:preserve-3d;perspective:1100px}.product-art{transition:transform .3s ease}}
+@media(max-width:760px){.motion-story{height:240svh}.motion-story-sticky{min-height:0}.motion-story-top{top:92px;font-size:8px}.motion-story-top span:first-child{max-width:170px}.motion-story-copy{top:39%;width:calc(100% - 40px)}.motion-story-copy h2{font-size:clamp(67px,16vw,118px)}.motion-story-copy>p:last-child{max-width:260px;font-size:12px}.motion-story-bike{left:54%;top:67%;width:120vw;opacity:.8}.motion-orbit,.motion-halo{left:55%;top:68%;width:110vw}.orbit-b{width:85vw}.motion-story-bottom{bottom:30px;font-size:8px}.motion-story-bottom span:last-child{display:none}.motion-interlude{min-height:70svh}.motion-interlude-title{font-size:clamp(80px,17vw,150px)}.motion-interlude-line{font-size:8px}.motion-cursor{display:none}}
+@media(prefers-reduced-motion:reduce){.motion-story{height:auto}.motion-story-sticky{position:relative;height:100svh}.motion-cursor{display:none}.motion-story-copy,.product-art img{transition:none!important}}

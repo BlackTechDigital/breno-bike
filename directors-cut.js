@@ -1,0 +1,17 @@
+/* Director's Cut 4.0: frame-coordinated cinematic animation, no hidden-content dependencies. */
+(()=>{'use strict';const stage=document.querySelector('.dc-stage');if(!stage)return;
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const chapters=[
+{count:'01 / 04',kicker:'THE ELECTRIC REVOLUTION',title:'NÃO EXISTE<br><em>LIMITE.</em>',text:'Uma nova maneira de explorar a cidade e descobrir o que existe além dela.'},
+{count:'02 / 04',kicker:'PRECISION IN MOTION',title:'POTÊNCIA<br><em>EM CADA ROTA.</em>',text:'Engenharia e atitude em uma experiência que responde ao seu ritmo.'},
+{count:'03 / 04',kicker:'THE NEW PERSPECTIVE',title:'SINTA O<br><em>IMPOSSÍVEL.</em>',text:'A cidade muda de perspectiva quando você escolhe uma nova direção.'},
+{count:'04 / 04',kicker:'BUILT FOR FREEDOM',title:'O FUTURO<br><em>É SEU.</em>',text:'A próxima jornada não espera. Descubra o seu jeito de ir além.'}];
+const bike=document.querySelector('.dc-bike-image'),count=document.querySelector('#dcCount'),kicker=document.querySelector('#dcKicker'),headline=document.querySelector('#dcHeadline'),description=document.querySelector('#dcDescription'),fill=document.querySelector('#dcProgressFill'),kinetic=document.querySelector('.dc-kinetic'),rail=document.querySelector('.dc-kinetic-text');
+let ticking=false,current=0;const clamp=(n,a,b)=>Math.min(b,Math.max(a,n));
+function update(){ticking=false;const rect=stage.getBoundingClientRect(),length=Math.max(1,stage.offsetHeight-innerHeight),p=clamp(-rect.top/length,0,1);if(rect.top<innerHeight&&rect.bottom>0){const idx=Math.min(3,Math.floor(p*4));if(idx!==current){current=idx;const c=chapters[idx];count.textContent=c.count;kicker.textContent=c.kicker;headline.innerHTML=c.title;description.textContent=c.text;}
+fill.style.transform=`scaleX(${p})`;if(!reduce){const phase=p*Math.PI*2;bike.style.transform=`translate3d(${Math.sin(phase)*65}px,calc(-50% + ${Math.cos(phase)*24}px),0) rotate(${Math.sin(phase)*-5}deg) scale(${.94+p*.14})`;bike.style.opacity=String(clamp(.92+Math.sin(p*Math.PI)*.08,.9,1));}}
+if(kinetic&&rail&&!reduce){const r=kinetic.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0){const progress=clamp((innerHeight-r.top)/(innerHeight+r.height),0,1);rail.style.transform=`translate3d(${-5-progress*25}%,0,0)`;}}}
+function schedule(){if(!ticking){ticking=true;requestAnimationFrame(update)}}window.addEventListener('scroll',schedule,{passive:true});window.addEventListener('resize',schedule,{passive:true});update();
+const track=document.querySelector('.dc-gallery-track');document.querySelector('#dcGalleryPrev')?.addEventListener('click',()=>track?.scrollBy({left:-Math.min(track.clientWidth*.85,750),behavior:reduce?'auto':'smooth'}));document.querySelector('#dcGalleryNext')?.addEventListener('click',()=>track?.scrollBy({left:Math.min(track.clientWidth*.85,750),behavior:reduce?'auto':'smooth'}));
+if(track&&matchMedia('(pointer:fine)').matches){let down=false,start=0,scroll=0;track.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'){down=true;start=e.clientX;scroll=track.scrollLeft}});track.addEventListener('pointermove',e=>{if(down)track.scrollLeft=scroll-(e.clientX-start)});window.addEventListener('pointerup',()=>down=false);track.addEventListener('pointercancel',()=>down=false)}
+})();
